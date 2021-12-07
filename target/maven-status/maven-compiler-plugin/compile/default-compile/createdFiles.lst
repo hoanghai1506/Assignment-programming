@@ -1,0 +1,4 @@
+Main.class
+ibook\bookDataservice\service.class
+ibook\controler\bookManager.class
+ibook\bookinformation\Book.class
