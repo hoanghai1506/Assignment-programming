@@ -28,7 +28,7 @@ public class service {
             for (int i=0;i<allLines.size();i++){
             String line = allLines.get(i);
             String[] data =line.split(",");
-            Book book=new Book (data[0].trim(),data[1].trim(),data[2].trim(),data[3].trim(),Double.parseDouble(data[4]),data[5].trim());
+            Book book=new Book (data[0].trim(),data[1].trim(),data[2].trim(),data[3].trim(),Double.parseDouble(data[4]),data[5].trim(),data[6].trim());
             books.add(book);
             }
             return books;
@@ -43,5 +43,7 @@ public class service {
             Files.write(pathFileToWrite,list);
         
         }
+
+   
     
 }

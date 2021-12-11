@@ -18,17 +18,19 @@ public class Book {
     private String language;
     private Double price;
     private String publicDate;
+    private String Isbn;
 
     public Book() {
     }
 
-    public Book(String id, String namebook, String author, String language, Double price, String publicDate) {
+    public Book(String id, String namebook, String author, String language, Double price, String publicDate, String Isbn) {
         this.id = id;
         this.namebook = namebook;
         this.author = author;
         this.language = language;
         this.price = price;
         this.publicDate = publicDate;
+        this.Isbn=Isbn;
     }
     public Book input(Scanner sc){
         System.out.println("Enter Book id:");
@@ -44,7 +46,9 @@ public class Book {
         double price=sc.nextDouble();sc.nextLine();
         System.out.println("Enter publicdate");
         String date = sc.nextLine();
-        return new Book(id,name,author,langhuge,price,date);
+        System.out.println("Enter ISBN");
+        String Isbn = sc.nextLine();
+        return new Book(id,name,author,langhuge,price,date,Isbn);
     }
 
     public String getId() {
@@ -95,12 +99,28 @@ public class Book {
         this.publicDate = publicDate;
     }
 
+    public String getIsbn() {
+        return Isbn;
+    }
+
+    public void setIsbn(String Isbn) {
+        this.Isbn = Isbn;
+    }
+
+   
+
+ 
+
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", namebook=" + namebook + ", author=" + author + ", language=" + language + ", price=" + price + ", publicDate=" + publicDate + '}';
+        return "Book{" + "id=" + id + ", namebook=" + namebook + ", author=" + author + ", language=" + language + ", price=" + price + ", publicDate=" + publicDate + ", Isbn=" + Isbn + '}';
     }
+    
+
+    
+    
     public String toString1() {
-        return ( id + "," + namebook + "," + author + "," + language + "," + price + "," + publicDate ) ;
+        return ( id + "," + namebook + "," + author + "," + language + "," + price + "," + publicDate +","+Isbn ) ;
     }
 
 }

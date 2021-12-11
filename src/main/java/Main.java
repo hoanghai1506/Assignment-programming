@@ -1,10 +1,11 @@
 
-import ibook.bookDataservice.service;
+//import ibook.bookDataservice.service;
+//import ibook.bookinformation.Book;
 import ibook.bookinformation.Book;
 import ibook.controler.bookManager;
 import java.io.IOException;
 //import static java.util.Collections.list;
-import java.util.List;
+//import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -25,8 +26,6 @@ public class Main {
         String choose1 = null;
         boolean exit = false;
         bookManager bookmanager = new bookManager("./resouces/book.txt");
-        service services = new service();
-        List<Book> books = services.read("./resouces/book.txt");
         Showmenu();
         while (true) {
             choose = sc.nextLine();
@@ -34,7 +33,7 @@ public class Main {
                 case "1":
                     System.out.println("Add book");
                     bookmanager.addBook(sc);
-                    services.write("./resouces/book.txt", books);
+                   bookmanager.write("./resouces/book.txt");
                     break;
                 case "2":
                     System.out.println("Edit book");
@@ -42,6 +41,7 @@ public class Main {
                     String bookid = sc.nextLine();
                     sc.nextLine();
                     bookmanager.edit(bookid);
+                    bookmanager.write("./resouces/book.txt");
                     break;
                 case "3":
                     System.out.println("Delete book");
@@ -49,7 +49,7 @@ public class Main {
                     bookid = sc.nextLine();
                     sc.nextLine();
                     bookmanager.deleteStudent(bookid);
-                    services.write("./resouces/book.txt", books);
+                    bookmanager.write("./resouces/book.txt");
                     break;
                 case "4":
                     menusort();
@@ -57,17 +57,20 @@ public class Main {
                         choose = sc.nextLine();
                         switch (choose) {
                             case "1":
-                                bookmanager.sortById();
-                                System.out.println( bookmanager.toString());
+                               bookmanager.sortById();
+                              bookmanager.showAll();
                                 break;
                             case "2":
                                 bookmanager.sortByName();
+                                bookmanager.showAll();
                                 break;
                             case "3":
                                 bookmanager.sortByPrice();
+                                bookmanager.showAll();
                                 break;
                             case "4":
                                 bookmanager.sortByDate();
+                                bookmanager.showAll();
                                 break;
                             case "0":
                                 System.out.println("Exited");
@@ -92,12 +95,15 @@ public class Main {
                             case "1":
                                 System.out.println("Enter Id:");
                                 bookid = sc.nextLine();
-                                bookmanager.findById(books, bookid);
+                               Book newId = bookmanager.findById(bookid);
+                                System.out.println(newId);
                                 break;
                             case "2":
                                 System.out.println("Enter name:");
                                 String name = sc.nextLine();
-                                bookmanager.findByName(books, name);
+                             
+                               Book newbook= bookmanager.findByName(name);
+                                System.out.println(newbook);
                                 break;
                             case "0":
                                 System.out.println("Exited");
@@ -115,7 +121,7 @@ public class Main {
                     continue;
                 case "6":
                     bookmanager.showAll();
-                    break;
+                    continue;
                 case "0":
                     System.out.println("Exited");
                     exit = true;
@@ -158,7 +164,8 @@ public class Main {
         System.out.println("----------------------------find---------------------------");
         System.out.println("1.Find by Id");
         System.out.println("2.Find by name");
+        System.out.println("2.Find by ISBN");
         System.out.println("0.Exit");
         System.out.println("------------------------------------------------------------");
-    }
+   }
 }

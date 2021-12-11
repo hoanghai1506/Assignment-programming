@@ -1,0 +1,2 @@
+NOV1,The Alchemist,Paulo Coelho,Portuguese,100000.0,1988,ISBN10 0061122416 
+SElF1,How to stop worrying and start living,Dale Carnegie,English,100000.0,1955,ISBN10 0671733354

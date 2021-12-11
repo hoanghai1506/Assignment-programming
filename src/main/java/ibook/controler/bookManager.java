@@ -7,10 +7,10 @@ package ibook.controler;
 import ibook.bookDataservice.service;
 import ibook.bookinformation.Book;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
+//import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -21,6 +21,10 @@ import java.util.Scanner;
  */
 public class bookManager {
 
+    public static void add(Book book) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private List<Book> list;
     private final String pathFileToInput;
     private service Service;
@@ -30,7 +34,7 @@ public class bookManager {
         this.Service = new service();
         try {
             this.list = Service.read(pathFileToInput);
-         //  this.list=Service.write(pathFileToInput);
+
         } catch (IOException e) {
 
         }
@@ -43,6 +47,7 @@ public class bookManager {
 
     public void sortById() {
         Collections.sort(list, (s2, s1) -> s1.getId().compareTo(s2.getId()));
+
     }
 
     public void sortByathor() {
@@ -57,7 +62,7 @@ public class bookManager {
         Collections.sort(list, (s1, s2) -> s1.getPublicDate().compareTo(s2.getPublicDate()));
     }
 
-    public Book findByName(List<Book> list, String name) {
+    public Book findByName(String name) {
         for (Book s : list) {
             if (s.getNamebook().equals(name)) {
                 return s;
@@ -66,9 +71,18 @@ public class bookManager {
         return null;
     }
 
-    public Book findById(List<Book> list, String id) {
+    public Book findById(String id) {
         for (Book s : list) {
             if (s.getId().equals(id)) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    public Book findByIsbn(String Isbn) {
+        for (Book s : list) {
+            if (s.getIsbn().equals(Isbn)) {
                 return s;
             }
         }
@@ -83,41 +97,38 @@ public class bookManager {
 
     //delete
     public void deleteStudent(String id) {
-        Book findById = findById(list, id);
+        Book findById = findById(id);
         list.remove(findById);
     }
 
     public void edit(String id) {
-        Book students = findById(list, id);
+        Book books = findById(id);
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter NameBook:");
         String newname = sc.nextLine();
-        students.setNamebook(newname);
+        books.setNamebook(newname);
         System.out.println("Enter Athor");
-        String newClass = sc.nextLine();
-        students.setAuthor(newClass);
+        String newauthor = sc.nextLine();
+        books.setAuthor(newauthor);
         System.out.println("Enter  language:");
-        String newAdd = sc.nextLine();
-        students.setLanguage(newAdd);
+        String newlanguage = sc.nextLine();
+        books.setLanguage(newlanguage);
         System.out.println("Enter price");
-        double newC = sc.nextDouble();
-        students.setPrice(newC);
+        double newprice = sc.nextDouble();
+        books.setPrice(newprice);
         System.out.println("Enter publicDate");
-        String newNetworking = sc.nextLine();
-        students.setPublicDate(newNetworking);
+        String newpublicdate = sc.nextLine();
+        books.setPublicDate(newpublicdate);
+        System.out.println("Enter ISBN");
+        String newIsbn=sc.nextLine();
+        books.setIsbn(newIsbn);
     }
 
     public void addBook(Scanner sc) {
         list.add(new Book().input(sc));
     }
-    public void write(String path,List<Book> books) throws IOException{
-            List<String> list=new ArrayList<>();
-            for( int i=0;i<books.size();i++){
-                Book bookout=books.get(i);
-                list.add(bookout.toString1());
-            }
-            Path pathFileToWrite= Paths.get(path);
-            Files.write(pathFileToWrite,list);
-        
-        }
+
+    public void write(String path) throws IOException {
+        Service.write(path, list);
+    }
 }
