@@ -1,29 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ibook.controler;
 
 import ibook.bookDataservice.service;
 import ibook.bookinformation.Book;
 import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-//import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- *
- * @author hoanghai
- */
 public class bookManager {
 
-    public static void add(Book book) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     private List<Book> list;
     private final String pathFileToInput;
@@ -39,7 +25,6 @@ public class bookManager {
 
         }
     }
-
     // sort
     public void sortByName() {
         Collections.sort(list, (s1, s2) -> s1.getNamebook().compareTo(s2.getNamebook()));
@@ -94,40 +79,58 @@ public class bookManager {
             System.out.println(s.toString());
         }
     }
-
     //delete
     public void deleteStudent(String id) {
         Book findById = findById(id);
         list.remove(findById);
     }
-
-    public void edit(String id) {
+    // edit book
+    public void editName(String id) {
         Book books = findById(id);
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter NameBook:");
         String newname = sc.nextLine();
         books.setNamebook(newname);
-        System.out.println("Enter Athor");
+    }
+    public void editAuthor(String id) {
+        Book books = findById(id);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Name author:");
         String newauthor = sc.nextLine();
         books.setAuthor(newauthor);
-        System.out.println("Enter  language:");
+    }
+    public void editLanguage(String id) {
+        Book books = findById(id);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter language:");
         String newlanguage = sc.nextLine();
         books.setLanguage(newlanguage);
-        System.out.println("Enter price");
-        double newprice = sc.nextDouble();
+    }
+    public void editPrice(String id) {
+        Book books = findById(id);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter new price:");
+        Double newprice = sc.nextDouble();
         books.setPrice(newprice);
-        System.out.println("Enter publicDate");
-        String newpublicdate = sc.nextLine();
-        books.setPublicDate(newpublicdate);
-        System.out.println("Enter ISBN");
-        String newIsbn=sc.nextLine();
-        books.setIsbn(newIsbn);
+    }
+     public void editDate(String id) {
+        Book books = findById(id);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Date:");
+        String newdate = sc.nextLine();
+        books.setPublicDate(newdate);
+    }
+      public void editISBN(String id) {
+        Book books = findById(id);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter ISBN:");
+        String newnisbn = sc.nextLine();
+        books.setIsbn(newnisbn);
     }
 
     public void addBook(Scanner sc) {
         list.add(new Book().input(sc));
     }
-
     public void write(String path) throws IOException {
         Service.write(path, list);
     }

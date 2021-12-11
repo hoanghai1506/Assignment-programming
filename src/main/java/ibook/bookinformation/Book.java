@@ -41,9 +41,9 @@ public class Book {
         System.out.println("Enter author");
         String author =sc.nextLine();
         System.out.println("Enter Language: ");
-        String langhuge = sc.nextLine();
+        String langhuge = sc.nextLine();sc.nextLine();
         System.out.println("Enter price: ");
-        double price=sc.nextDouble();sc.nextLine();
+        double price=sc.nextDouble();
         System.out.println("Enter publicdate");
         String date = sc.nextLine();
         System.out.println("Enter ISBN");

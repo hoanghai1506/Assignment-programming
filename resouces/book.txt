@@ -1,3 +1,4 @@
-NOV1,The Alchemist,Paulo Coelho,Portuguese,100000.0,1988, 0345313976 
+NOV1,The Alchemist,Paulo Coelho,Portuguese,100000.0,1988,0345313976
 SElF1,How to stop worrying and start living,Dale Carnegie,English,100000.0,1955,0671733354
-SEl02,How to Win Friends and Influence People,Dale Carnegie,English,120000.0,1936, 0671772465
+SEl02,How to Win Friends and Influence People,Dale Carnegie,English,120000.0,1936,0671772465
+SELF3,The 7 Habits of Highly Effective People,Stephen R.Covey,English,100000.0,,145784268

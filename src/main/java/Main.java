@@ -1,17 +1,9 @@
 
-//import ibook.bookDataservice.service;
-//import ibook.bookinformation.Book;
 import ibook.bookinformation.Book;
 import ibook.controler.bookManager;
 import java.io.IOException;
-//import static java.util.Collections.list;
-//import java.util.List;
 import java.util.Scanner;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 /**
  *
  * @author hoanghai
@@ -33,22 +25,77 @@ public class Main {
                 case "1":
                     System.out.println("Add book");
                     bookmanager.addBook(sc);
-                   bookmanager.write("./resouces/book.txt");
-                    break;
-                case "2":
-                    System.out.println("Edit book");
-                    System.out.println("Enter id");
-                    String bookid = sc.nextLine();
-                    sc.nextLine();
-                    bookmanager.edit(bookid);
+                    System.out.println("Successfull !");
                     bookmanager.write("./resouces/book.txt");
                     break;
+                case "2":
+                    menuedit();
+                    while (true) {
+                        choose = sc.nextLine();
+                        switch (choose) {
+                            case "1":
+                                System.out.println("Enter ID book");
+                                String bookid = sc.nextLine();
+                                System.out.println("Edit Name");
+                                bookmanager.editName(bookid);
+                                System.out.println("Successfull !");
+                                break;
+                            case "2":
+                                System.out.println("Enter ID book");
+                                bookid = sc.nextLine();
+                                System.out.println("Edit author");
+                                bookmanager.editAuthor(bookid);
+                                System.out.println("Successfull !");
+                                break;
+                            case "3":
+                                System.out.println("Enter ID book");
+                                bookid = sc.nextLine();
+                                System.out.println("Edit language");
+                                bookmanager.editLanguage(bookid);
+                                System.out.println("Successfull !");
+                                break;
+                            case "4":
+                                System.out.println("Enter ID book");
+                                bookid = sc.nextLine();
+                                System.out.println("Edit pirce");
+                                bookmanager.editPrice(bookid);
+                                System.out.println("Successfull !");
+                                break;
+                            case "5":
+                                System.out.println("Enter ID book");
+                                bookid = sc.nextLine();
+                                System.out.println("Edit public Date");
+                                bookmanager.editDate(bookid);
+                                System.out.println("Successfull !");
+                                break;
+                            case "6":
+                                System.out.println("Enter ID book");
+                                bookid = sc.nextLine();
+                                System.out.println("Edit ISBN");
+                                bookmanager.editISBN(bookid);
+                                System.out.println("Successfull !");
+                                break;
+                            case "0":
+                                System.out.println("Exited");
+                                exit = true;
+                                break;
+                            default:
+                                System.out.println("Please choose again!");
+                                break;
+                        }
+                        if (exit) {
+                            break;
+                        }
+                    }
+                    Showmenu();
+                    continue;
                 case "3":
                     System.out.println("Delete book");
                     System.out.println("Enter id:");
-                    bookid = sc.nextLine();
+                    String bookid = sc.nextLine();
                     sc.nextLine();
                     bookmanager.deleteStudent(bookid);
+                    System.out.println("Successfull !");
                     bookmanager.write("./resouces/book.txt");
                     break;
                 case "4":
@@ -57,20 +104,28 @@ public class Main {
                         choose = sc.nextLine();
                         switch (choose) {
                             case "1":
-                               bookmanager.sortById();
-                              bookmanager.showAll();
+                                System.out.println("Sort By Id");
+                                bookmanager.sortById();
+                                bookmanager.showAll();
+                                System.out.println("------------------------------------------------------------");
                                 break;
                             case "2":
+                                System.out.println("Sort By Name");
                                 bookmanager.sortByName();
                                 bookmanager.showAll();
+                                System.out.println("------------------------------------------------------------");
                                 break;
                             case "3":
+                                System.out.println("Sort By Price");
                                 bookmanager.sortByPrice();
                                 bookmanager.showAll();
+                                System.out.println("------------------------------------------------------------");
                                 break;
                             case "4":
+                                System.out.println("Sort By Date");
                                 bookmanager.sortByDate();
                                 bookmanager.showAll();
+                                System.out.println("------------------------------------------------------------");
                                 break;
                             case "0":
                                 System.out.println("Exited");
@@ -95,14 +150,14 @@ public class Main {
                             case "1":
                                 System.out.println("Enter Id:");
                                 bookid = sc.nextLine();
-                               Book newId = bookmanager.findById(bookid);
+                                Book newId = bookmanager.findById(bookid);
                                 System.out.println(newId);
                                 break;
                             case "2":
                                 System.out.println("Enter name:");
                                 String name = sc.nextLine();
-                             
-                               Book newbook= bookmanager.findByName(name);
+
+                                Book newbook = bookmanager.findByName(name);
                                 System.out.println(newbook);
                                 break;
                             case "0":
@@ -167,5 +222,16 @@ public class Main {
         System.out.println("2.Find by ISBN");
         System.out.println("0.Exit");
         System.out.println("------------------------------------------------------------");
-   }
+    }
+
+    public static void menuedit() {
+        System.out.println("----------------------------edit---------------------------");
+        System.out.println("1.Edit Name");
+        System.out.println("2.Edit author");
+        System.out.println("3.Edit language");
+        System.out.println("5.Edit price");
+        System.out.println("6.Edit public date");
+        System.out.println("7.Edit ISBN");
+        System.out.println("------------------------------------------------------------");
+    }
 }
